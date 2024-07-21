@@ -1,6 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
-import Button from './components/Button';
+import Button, { ButtonTypes } from './components/Button';
 
 const App = () => {
   const isError = false;
@@ -13,11 +13,19 @@ const App = () => {
         title="1"
         onPress={() => console.log(1)}
         buttonStyle={{ width: 100, height: 100 }}
+        buttonType={ButtonTypes.NUMBER}
       />
       <Button
-        title="0"
-        onPress={() => console.log(0)}
-        buttonStyle={{ width: 200, height: 100 }}
+        title="+"
+        onPress={() => console.log('+')}
+        buttonStyle={{ width: 100, height: 200 }}
+        buttonType={ButtonTypes.OPERATOR}
+      />
+      <Button
+        title="-"
+        onPress={() => console.log('-')}
+        buttonStyle={{ width: 100, height: 200 }}
+        buttonType={ButtonTypes.OPERATOR}
       />
       <Text style={[styles.error, styles.text]}>StyleSheet</Text>
       <Text style={[styles.text, isError && styles.error]}>Error</Text>

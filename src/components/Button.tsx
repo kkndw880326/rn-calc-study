@@ -8,16 +8,37 @@ import {
   ViewStyle,
 } from 'react-native';
 
+enum ButtonTypes {
+  NUMBER = 'NUMBER',
+  OPERATOR = 'OPERATOR',
+}
+
 type CustomButtonProps = {
   buttonStyle: StyleProp<ViewStyle>;
+  buttonType: ButtonTypes;
 } & ButtonProps;
 
-const Button = ({ title, onPress, buttonStyle }: CustomButtonProps) => {
+const Colors = {
+  [ButtonTypes.NUMBER]: ['#71717a', '#3f3f46'],
+  [ButtonTypes.OPERATOR]: ['#f59e0b', '#b45309'],
+};
+
+const Button = ({
+  title,
+  onPress,
+  buttonStyle,
+  buttonType = ButtonTypes.NUMBER,
+}: CustomButtonProps) => {
   return (
     <Pressable
       style={({ pressed }: PressableStateCallbackType) => [
         styles.button,
-        pressed && { backgroundColor: '#3f3f46' },
+        {
+          backgroundColor: Colors[buttonType][0],
+        },
+        pressed && {
+          backgroundColor: Colors[buttonType][1],
+        },
         buttonStyle,
       ]}
       onPressOut={onPress}
@@ -31,7 +52,6 @@ const styles = StyleSheet.create({
   button: {
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#71717a',
   },
   title: {
     color: '#ffffff',
@@ -39,4 +59,5 @@ const styles = StyleSheet.create({
   },
 });
 
+export { ButtonTypes };
 export default Button;
