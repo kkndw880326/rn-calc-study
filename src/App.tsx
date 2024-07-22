@@ -1,34 +1,22 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
 import Button, { ButtonTypes } from './components/Button';
+import { useState } from 'react';
 
 const App = () => {
-  const isError = false;
+  const [result, setResult] = useState(0);
 
   return (
     <View style={styles.container}>
       <StatusBar style="auto" />
-      <Text style={styles.text}>Calc App</Text>
-      <Button
-        title="1"
-        onPress={() => console.log(1)}
-        buttonStyle={{ width: 100, height: 100 }}
-        buttonType={ButtonTypes.NUMBER}
-      />
-      <Button
-        title="+"
-        onPress={() => console.log('+')}
-        buttonStyle={{ width: 100, height: 200 }}
-        buttonType={ButtonTypes.OPERATOR}
-      />
-      <Button
-        title="-"
-        onPress={() => console.log('-')}
-        buttonStyle={{ width: 100, height: 200 }}
-        buttonType={ButtonTypes.OPERATOR}
-      />
-      <Text style={[styles.error, styles.text]}>StyleSheet</Text>
-      <Text style={[styles.text, isError && styles.error]}>Error</Text>
+
+      <View style={styles.resultContainer}>
+        <Text style={styles.text}>{result}</Text>
+      </View>
+
+      <View style={styles.buttonContainer}>
+        <Text>Buttonc</Text>
+      </View>
     </View>
   );
 };
@@ -36,17 +24,27 @@ const App = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    flexDirection: 'column',
     backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+    alignItems: 'stretch',
+    justifyContent: 'space-between',
   },
   text: {
-    fontSize: 30,
+    fontSize: 60,
     fontWeight: '700',
-    color: 'green',
+    color: '#ffffff',
+    paddingBottom: 30,
+    paddingRight: 30,
   },
-  error: {
-    color: 'red',
+  resultContainer: {
+    flex: 1,
+    backgroundColor: '#000000',
+    justifyContent: 'flex-end',
+    alignItems: 'flex-end',
+  },
+  buttonContainer: {
+    flex: 1,
+    backgroundColor: '#A5B4FC',
   },
 });
 
