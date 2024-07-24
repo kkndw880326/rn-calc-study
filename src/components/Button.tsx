@@ -15,7 +15,7 @@ enum ButtonTypes {
 
 type CustomButtonProps = {
   buttonStyle: StyleProp<ViewStyle>;
-  buttonType: ButtonTypes;
+  buttonType?: ButtonTypes;
 } & ButtonProps;
 
 const Colors = {
