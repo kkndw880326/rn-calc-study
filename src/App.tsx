@@ -118,7 +118,7 @@ const App = () => {
         </View>
 
         <View>
-          {/* operation button */}
+          {/* operator button */}
           <Button
             title={Operators.CLEAR}
             onPress={() => onPressOperator(Operators.CLEAR)}
